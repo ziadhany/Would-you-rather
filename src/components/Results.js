@@ -1,5 +1,5 @@
 import React from "react";
-import {Header, Table , Rating } from "semantic-ui-react";
+import {Header, Table } from "semantic-ui-react";
 import {connect} from "react-redux";
 import {useParams} from "react-router-dom";
 import {FDate} from "../utils/formate"

@@ -11,10 +11,6 @@ export function getAnsQIds(authedUser,users){
   return Object.keys(users[authedUser].answers)
 }
 
-export function q_sortByTime(questions, questionIds) {
-  return Object.keys(questions).sort((x,y) => questions[x].timestamp - questions[y].timestamp);
-}
-
 export function FDate(timestamp) {
   const time = new Date(timestamp);
   return time.toLocaleDateString();

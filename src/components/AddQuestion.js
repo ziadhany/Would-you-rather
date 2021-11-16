@@ -31,9 +31,9 @@ class AddQuestion extends React.Component {
   
     handleSubmit = (e) =>{
         e.preventDefault()
-        const {dispatch,authedUser,users,questions} = this.props
+        const {dispatch,authedUser} = this.props
         const {option_one, option_two} = this.state
-        dispatch(addQuestion(formatQuestion(option_one,option_two,authedUser) ))
+        dispatch(addQuestion(formatQuestion(option_one,option_two,authedUser)))
     }
     render(){
         return(

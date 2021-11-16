@@ -32,7 +32,7 @@ class Home extends React.Component {
     }}
 
 const mapStateToProps = ({ users, authedUser,questions }) => ({
-    authedUser  ,
+    authedUser,
     users,
     questions
 });

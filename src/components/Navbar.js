@@ -33,7 +33,7 @@ class Navbar extends React.Component {
 
     }
 }
-function mapStateToProps({authedUser,users}){
+function mapStateToProps({authedUser}){
     return {
         authedUser,
     }

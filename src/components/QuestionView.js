@@ -5,14 +5,20 @@ import { Link } from 'react-router-dom'
 import {useParams} from "react-router-dom";
 import { setQuestionVote } from '../actions/questions'
 class QuestionView extends React.Component {  
-      handleAnsQ = (e,op) => {
+      handleAnsQ_opOne = (e) => {
         e.preventDefault()
-        const { dispatch, users  ,authedUser  } = this.props;
+        const { dispatch  ,authedUser  } = this.props;
         const qid = this.props.params.id;
         dispatch(setQuestionVote(authedUser, qid, "optionOne"))
       }
+      handleAnsQ_opTwo = (e) => {
+        e.preventDefault()
+        const { dispatch  ,authedUser  } = this.props;
+        const qid = this.props.params.id;
+        dispatch(setQuestionVote(authedUser, qid, "optionTwo"))
+    }
     render() {
-           const { dispatch, questions, users ,authedUser  } = this.props;
+           const {questions, users} = this.props;
            const id = this.props.params.id;
    		   const question = questions[id]
            const user = question ? users[question.author] : null
@@ -26,13 +32,13 @@ class QuestionView extends React.Component {
                 <br/>
                 <br/>
                 <Button.Group>
-    <Button onClick={this.handleAnsQ.bind('optionOne')}> 
+    <Button onClick={this.handleAnsQ_opOne.bind()}>
     <Link to={`/result/${id}`}> {question.optionOne.text} </Link>
     </Button> 
 
           <Button.Or text='or' onClick={(e) => {e.preventDefault();}} /> 
           
-    <Button positive onClick={this.handleAnsQ.bind('optionTwo')} >
+    <Button positive onClick={this.handleAnsQ_opTwo.bind()} >
     <Link to={`/result/${id}`} >{question.optionTwo.text}</Link>
     </Button>
                 </Button.Group>

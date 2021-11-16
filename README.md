@@ -70,17 +70,36 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 # Project Structure
-    src
-    actions 
-    components 
-    middlewares
-    reducers
-    utils
-    App.csc
-    App.js
-    App.test.js
-    _DATA.js
-    index.css
-    index.js 
-    reportWebVitals.js
-    setupTests.js
+     src
+         actions 
+           ├── authedUser.js
+           ├── questions.js
+           ├── shared.js
+           └── users.js
+         components 
+           ├── authedUser.js
+           ├── questions.js
+           ├── shared.js
+           └── users.js
+         middlewares
+           ├── shared.js
+           └── users.js
+         reducers
+           ├── authedUser.js
+           ├── index.js
+           ├── questions.js
+           └── users.js
+         utils
+           └── formate.js
+        App.csc
+        App.js
+        App.test.js
+        _DATA.js
+        index.css
+        index.js 
+        reportWebVitals.js
+        setupTests.js
+        .gitignore
+        package.json
+        README.md
+        yarn.lock
