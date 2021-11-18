@@ -26,5 +26,5 @@ export function FLeaderBoard (users) {
     user['score'] = Object.keys(user['answers']).length + user['questions'].length;
     return user;
   });
-  return leaderboard.sort((x,y) => x.score - y.score);
+  return leaderboard.sort((x,y) => y.score - x.score);
 }

@@ -11,37 +11,39 @@ class Login extends React.Component {
         e.preventDefault();
         const { value } = this.state;
         const {dispatch ,users} = this.props;
-      	const user = Object.values(users).filter(user => user.name === value);
+        const user = Object.values(users).filter(user => user.name === value);
         dispatch(setAuthedUser(user[0].id));
     }
-   handleChange = (e, { value }) => this.setState({ value })
+    handleChange = (e, { value }) => this.setState({ value })
     render() {
-            const options = Object.values(this.props.users).map((user)=>{
-       return {
-   		   key: user.id,
-      	   text: user.name,
-           value: user.name,
-           image: { avatar: true, src: user.avatarURL}}
-   })
+        const {users, authedUser} = this.props;
+        const options = Object.values(users).map((user)=>{
+            return {
+                key: user.id,
+                text: user.name,
+                value: user.name,
+                image: { avatar: true, src: user.avatarURL}}
+        })
+        console.log(options)
         return (
             <div className="login-form">
-            <form onSubmit={this.handleLogin}>
-                <h2>Login</h2>
-                <hr/>
-                <label>Choose a username:</label>
-                <br/>
-                <br/>
-                <Dropdown
-                            inline
-                            options={options}
-                            onChange={this.handleChange}
-                            defaultValue={options[0] ? options[0].value : null }
-                        />
-                <br/>
-                <br/>
-                <Button primary>Login</Button>
+                <form onSubmit={this.handleLogin}>
+                    <h2>Login</h2>
+                    <hr/>
+                    <label>Choose a username:</label>
+                    <br/>
+                    <br/>
+                    <Dropdown
+                        inline
+                        options={options}
+                        onChange={this.handleChange}
+                        defaultValue={authedUser ? options.find((a) => a["key"] === authedUser ).value : null }
+                    />
+                    <br/>
+                    <br/>
+                    <Button primary>Login</Button>
 
-            </form>
+                </form>
             </div>
         )
     }}
@@ -49,7 +51,8 @@ class Login extends React.Component {
 function mapStateToProps({users,authedUser}){
     return {
         users,
-        authedUser
+        authedUser,
+
     }
 }
 

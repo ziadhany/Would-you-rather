@@ -16,30 +16,30 @@ class App extends React.Component {
         this.props.dispatch(handleInitialData())
     }
     render() {
-      const {authedUser} = this.props;
-  return (
-     <BrowserRouter>
-         <Navbar/>
-  { authedUser ? <Routes>
-            <Route path="/login" element={<Login/>} />
-            <Route path="/" element={<Home/>} />
-            <Route path="/leaderboard" element={<Leaderboard/>}/>
-            <Route path="/add" element={<AddQuestion/>} /> 
-            <Route path="/question/:id" element={<QuestionView/>} />
-            <Route path="/result/:id" element={<Results/>} />
-            <Route path="*" element={<NotFound/>}/>
-    </Routes>
-: <Routes> <Route path="*" element={<Login/>} /></Routes>}
-     </BrowserRouter>
-  );}
+        const {authedUser} = this.props;
+        return (
+            <BrowserRouter>
+                <Navbar/>
+                { authedUser ? <Routes>
+                        <Route path="/login" element={<Login/>} />
+                        <Route path="/" element={<Home/>} />
+                        <Route path="/leaderboard" element={<Leaderboard/>}/>
+                        <Route path="/add" element={<AddQuestion/>} />
+                        <Route path="/question/:id" element={<QuestionView/>} />
+                        <Route path="/result/:id" element={<Results/>} />
+                        <Route path="*" element={<NotFound/>}/>
+                    </Routes>
+                    : <Routes> <Route path="*" element={<Login/>} /></Routes>}
+            </BrowserRouter>
+        );}
 }
 
 function mapStateToProps({authedUser,users,questions})
 {
     return {
-      users,
-      questions,
-      authedUser : authedUser
+        users,
+        questions,
+        authedUser : authedUser
     }
 }
 

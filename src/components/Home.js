@@ -6,12 +6,12 @@ import {connect} from "react-redux";
 class Home extends React.Component {
     render() {
         const { users , questions , authedUser } = this.props;
-      	const ansQIds = Object.keys(questions).filter((id) => users[authedUser].answers.hasOwnProperty(id)).sort((a, b) => questions[b].timestamp - questions[a].timestamp);
+        const ansQIds = Object.keys(questions).filter((id) => users[authedUser].answers.hasOwnProperty(id)).sort((a, b) => questions[b].timestamp - questions[a].timestamp);
 
-	   const unAnsQIds = Object.keys(questions).filter((id) => !users[authedUser].answers.hasOwnProperty(id)).sort((a, b) => questions[b].timestamp - questions[a].timestamp);
-      console.log(ansQIds);
-	  console.log(unAnsQIds);
-      const panes = [
+        const unAnsQIds = Object.keys(questions).filter((id) => !users[authedUser].answers.hasOwnProperty(id)).sort((a, b) => questions[b].timestamp - questions[a].timestamp);
+        console.log(ansQIds);
+        console.log(unAnsQIds);
+        const panes = [
             {
                 menuItem: 'Unanswered Question',
                 render: () => <Tab.Pane attached={false}>{unAnsQIds.map((id)=><Question id={id} key={id}/> )}</Tab.Pane>,
@@ -19,14 +19,14 @@ class Home extends React.Component {
             {
                 menuItem: 'Answered Question',
                 render: () => <Tab.Pane attached={false}>{ansQIds.map((id)=><Question id={id} key={id} /> )}</Tab.Pane>,
-                
+
             },
         ]
         return (
             <form className="App">
-        <Button.Group>
-            <Tab menu={{ pointing: true }} panes={panes} />
-        </Button.Group>
+                <Button.Group>
+                    <Tab menu={{ pointing: true }} panes={panes} />
+                </Button.Group>
             </form>
         )
     }}

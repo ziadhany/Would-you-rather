@@ -2,9 +2,12 @@ import React from 'react';
 import {Button, Form} from "semantic-ui-react";
 import {BsFillSignpostSplitFill} from "react-icons/all";
 import '../App.css'
-import {addQuestion} from "../actions/questions";
+import { addQuestion  } from "../actions/questions";
+import { setQuestion  } from "../actions/users";
 import { connect } from 'react-redux';
-import {formatQuestion} from "../_DATA"
+import { formatQuestion } from "../_DATA"
+import { useNavigate } from "react-router-dom";
+
 class AddQuestion extends React.Component {
     constructor(props) {
         super(props);
@@ -28,12 +31,15 @@ class AddQuestion extends React.Component {
             ...state,
             option_two:e.target.value
         }))}
-  
+
     handleSubmit = (e) =>{
         e.preventDefault()
         const {dispatch,authedUser} = this.props
         const {option_one, option_two} = this.state
-        dispatch(addQuestion(formatQuestion(option_one,option_two,authedUser)))
+        const question = formatQuestion(option_one,option_two,authedUser)
+        dispatch(addQuestion(question))
+        dispatch(setQuestion(question))
+        this.props.navigate('/');
     }
     render(){
         return(
@@ -41,22 +47,27 @@ class AddQuestion extends React.Component {
                 <h1>Would You Rather ..? </h1>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Field>
-                            <input  onChange={this.handleChangeOpOne} />
+                        <input  onChange={this.handleChangeOpOne} />
                         <span>OR <BsFillSignpostSplitFill/></span>
-                            <input  onChange={this.handleChangeOpTwo}/>
+                        <input  onChange={this.handleChangeOpTwo}/>
                         <div className='mybuttons'>
-                        <Button positive >Submit</Button>
+                            <Button positive >Submit</Button>
                         </div>
                     </Form.Field>
                 </Form>
             </div>
         );
     }}
+
+function WithNavigate(props) {
+    let navigate = useNavigate();
+    return <AddQuestion {...props} navigate={navigate} />
+}
 function mapStateToProps({authedUser,users,questions}){
     return {
-      authedUser,
-      users,
-      questions
+        authedUser,
+        users,
+        questions
     }
 }
-export default connect(mapStateToProps)(AddQuestion)
+export default connect(mapStateToProps)(WithNavigate)

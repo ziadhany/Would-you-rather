@@ -1,6 +1,50 @@
 # Getting Started with Create React App
 
-This project is a Would you rather game 
+This project is a Would you rather game ..?
+
+
+you can vote for questions, add a new question and get the result of the voting.
+and go to the Leaderboard find the scores of the players
+# Project Structure
+
+
+     src
+       ├── actions
+            ├── authedUser.js
+            ├── questions.js
+            ├── shared.js
+            └── users.js
+            
+       ├── components
+           ├── AddQuestion.js
+           ├── Home.js
+           ├── Leaderboard.js
+           ├── Login.js
+           ├── Navbar.js
+           ├── NotFound.js
+           ├── Question.js
+           ├── QuestionList.js
+           ├── QuestionView.js
+           ├── Results.js
+           ├── RowLeaderboard.js 
+       ├── middlewares
+           ├── shared.js
+           └── users.js
+       ├── reducers
+           ├── authedUser.js
+           ├── index.js
+           ├── questions.js
+           └── users.js
+       ├── utils
+            └── formate.js
+       ├── App.css
+       ├── App.js
+       ├── App.test.js
+       ├── _DATA.js
+       ├── index.css
+       ├── index.js
+       ├── reportWebVitals.js
+       ├── setupTests.js 
 
 ## Available Scripts
 
@@ -69,37 +113,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-# Project Structure
-     src
-         actions 
-           ├── authedUser.js
-           ├── questions.js
-           ├── shared.js
-           └── users.js
-         components 
-           ├── authedUser.js
-           ├── questions.js
-           ├── shared.js
-           └── users.js
-         middlewares
-           ├── shared.js
-           └── users.js
-         reducers
-           ├── authedUser.js
-           ├── index.js
-           ├── questions.js
-           └── users.js
-         utils
-           └── formate.js
-        App.csc
-        App.js
-        App.test.js
-        _DATA.js
-        index.css
-        index.js 
-        reportWebVitals.js
-        setupTests.js
-        .gitignore
-        package.json
-        README.md
-        yarn.lock
