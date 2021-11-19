@@ -36,9 +36,10 @@ class AddQuestion extends React.Component {
         e.preventDefault()
         const {dispatch,authedUser} = this.props
         const {option_one, option_two} = this.state
-        const question = formatQuestion(option_one,option_two,authedUser)
-        dispatch(addQuestion(question))
-        dispatch(setQuestion(question))
+        const question = formatQuestion ( option_one, option_two, authedUser )
+        console.log(question)
+        dispatch(addQuestion(question,authedUser))
+        dispatch(setQuestion(question,authedUser))
         this.props.navigate('/');
     }
     render(){
